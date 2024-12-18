@@ -20,8 +20,9 @@ let tie;
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelector(".sqr");
+const squareEls = document.querySelectorAll(".sqr");
 const messageEl = document.querySelector("#message");
+const boardEl = document.querySelector(".board");
 
 
 
@@ -64,9 +65,47 @@ function updateMessage() {
     }
 }
 
+function handleClick(e) {
+    const squareIndex = e.target.id;
+    if (isNaN(squareIndex) || board[squareIndex] || winner) return;
+    placePiece(squareIndex);
+    checkForWinner();
+    checkForTie();
+    switchPlayerTurn();
+    render()
+}
+
+function placePiece(index) {
+    board[index] = turn;
+}
+
+function checkForWinner() {
+    winningCombos.forEach(combo => {
+        if (board[combo[0]] &&
+            board[combo[0]] === board[combo[1]] &&
+            board[combo[0]] === board[combo[2]]) {
+                winner = board[combo[0]];
+            }
+    })
+}
+
+function checkForTie() {
+    if (winner) return;
+    tie = !board.includes("");
+}
+
+function switchPlayerTurn() {
+    if (winner) return;
+    if (turn === "X") {
+        turn = "O"
+    } else {
+        turn = "X"
+    }
+}
+
 /*----------------------------- Event Listeners -----------------------------*/
 
+boardEl.addEventListener("click", handleClick);
 
 
-// initialize game
 init();
