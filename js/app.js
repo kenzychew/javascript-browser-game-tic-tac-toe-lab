@@ -23,6 +23,7 @@ let tie;
 const squareEls = document.querySelectorAll(".sqr");
 const messageEl = document.querySelector("#message");
 const boardEl = document.querySelector(".board");
+const resetBtnEl = document.querySelector("#reset");
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -104,5 +105,6 @@ function switchPlayerTurn() {
 /*----------------------------- Event Listeners -----------------------------*/
 
 boardEl.addEventListener("click", handleClick);
+resetBtnEl.addEventListener("click", init);
 
 init();
