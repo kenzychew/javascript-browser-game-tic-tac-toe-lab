@@ -1,4 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
+
 const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -9,7 +10,6 @@ const winningCombos = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -23,8 +23,6 @@ let tie;
 const squareEls = document.querySelectorAll(".sqr");
 const messageEl = document.querySelector("#message");
 const boardEl = document.querySelector(".board");
-
-
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -106,6 +104,5 @@ function switchPlayerTurn() {
 /*----------------------------- Event Listeners -----------------------------*/
 
 boardEl.addEventListener("click", handleClick);
-
 
 init();
